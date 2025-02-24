@@ -23,3 +23,15 @@ jobs:
         env:
           ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      - name: Upload Scan Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-vulnerability-output
+          path: tenable_was_scan.html
+      - name: Upload Scan Log Troubleshooting Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-troubleshooting-logs
+          path: |
+            scanner.log
+            tenable_wascicd.conf
